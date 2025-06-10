@@ -10,7 +10,7 @@ def find_largest_ele_arr(arr: List) -> int:
         if arr[i] > largest_ele:
             largest_ele = arr[i]
 
-    return largest_ele        
+    return int(largest_ele)        
 
 
 if __name__ == "__main__":
