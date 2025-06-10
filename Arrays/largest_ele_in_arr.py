@@ -9,7 +9,6 @@ def find_largest_ele_arr(arr: List) -> int:
     for i in range(n):
         if arr[i] > largest_ele:
             largest_ele = arr[i]
-            print("largest_ele:", largest_ele)
 
     return int(largest_ele)        
 
