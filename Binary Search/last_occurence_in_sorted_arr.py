@@ -7,6 +7,7 @@ def last_occurence_in_sorted_arr(arr: List[int], target: int) -> int:
     n = len(arr)
     low, high = 0, n-1
     idx = -1
+    # axaxaxaxaaxaxax
 
     while low <= high:
         mid = (low+high) // 2
