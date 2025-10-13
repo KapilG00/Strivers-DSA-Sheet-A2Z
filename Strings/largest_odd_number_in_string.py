@@ -18,5 +18,5 @@ def largest_odd_number_in_string(string: str) -> str:
 
 
 if __name__ == "__main__":
-    # print(largest_odd_number_in_string("5347"))
+    print(largest_odd_number_in_string("5347"))
     print(largest_odd_number_in_string("0214638"))
