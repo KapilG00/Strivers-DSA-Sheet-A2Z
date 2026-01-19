@@ -21,7 +21,21 @@ def check_isomorphic_string(str1: str, str2: str) -> bool:
     
     return True
 
+def check_isomorphic_string(str1: str, str2: str) -> bool:
+    if len(str1) != len(str2):
+        return False
+    
+    char_map_1 = [0] * 256
+    char_map_2 = [0] * 256
 
+    for i in range(len(str1)):
+        if char_map_1[ord(str1[i])] != char_map_2[ord(str2[i])]:
+            return False
+
+        char_map_1[str1[i]] = i+1
+        char_map_2[str2[i]] = i+1
+
+    return True
 
 
 if __name__ == "__main__":
