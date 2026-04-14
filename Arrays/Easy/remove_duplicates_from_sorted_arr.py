@@ -21,7 +21,7 @@ def remove_duplicates_from_sorted_arr(arr: List[int]) -> List[int]:
 # Time complexity: O(n)
 # Space Complexity: O(n)
 # Brute-force approach. (not in-place)
-def temp(arr: List[int]) -> int:
+def remove_duplicates_from_sorted_arr(arr: List[int]) -> int:
     n = len(arr)
     new_arr = [arr[0]]
 
@@ -34,7 +34,7 @@ def temp(arr: List[int]) -> int:
 # Time complexity: O(n)
 # Space Complexity: O(n)
 # Brute-force approach. (in-place)
-def temp(arr: List[int]) -> int:
+def remove_duplicates_from_sorted_arr(arr: List[int]) -> int:
     index = 0
     s = set()
 
@@ -65,7 +65,7 @@ def remove_duplicates_from_sorted_arr(arr: List[int]) -> List[int]:
 # Time complexity: O(n)
 # Space Complexity: O(1)
 # Optimal approach. (in-place)
-def temp(arr: List[int]) -> int:
+def remove_duplicates_from_sorted_arr(arr: List[int]) -> int:
     n = len(arr)
     i = 0
 
