@@ -1,83 +1,45 @@
 from typing import List
 
-# brute-force
-# def temp(arr1: List[int], arr2: List[int]) -> int:
-#     n1, n2 = len(arr1), len(arr2)
-#     arr = []
+# Brute-force
+def func(arr: List[int]) -> int:
+    n = len(arr)
+    max_count_of_cons_1s = 0
 
-#     for i in range(n1):
-#         if arr1[i] not in arr:
-#             arr.append(arr1[i])
-    
-#     for j in range(n2):
-#         if arr2[j] not in arr:
-#             arr.append(arr2[j])
+    for i in range(n):
+        current_count_of_1s = 0
+        for j in range(i, n):
+            if arr[j] == 1:
+                current_count_of_1s += 1
+            else:
+                break
+        if current_count_of_1s > max_count_of_cons_1s:
+            max_count_of_cons_1s = current_count_of_1s
 
-#     return arr        
- 
-# brute-force
-# def temp(arr1: List[int], arr2: List[int]) -> int:
-#     n1, n2 = len(arr1), len(arr2)
-#     hash_map = {}
-#     arr = []
+    return max_count_of_cons_1s                
+        
 
-#     for i in range(n1):
-#         if arr1[i] not in hash_map:
-#             hash_map[arr1[i]] = 1
-#         else:
-#             hash_map[arr1[i]] += 1    
-
-#     for j in range(n2):
-#         if arr2[j] not in hash_map:
-#             hash_map[arr2[j]] = 1
-#         else:
-#             hash_map[arr2[j]] += 1
-
-#     for key in hash_map.keys():
-#         arr.append(key)
-
-#     return arr    
+# Better
+# def func(arr: List[int]) -> tuple[int, int]:
 
 
-# optimal
-def temp(arr1: List[int], arr2: List[int]) -> int:
-    n1, n2 = len(arr1), len(arr2)
-    i, j = 0, 0
-    arr = []
+# Optimal
+def func(arr: List[int]) -> int:
+    n = len(arr)
+    i = 0
+    count = 0
+    max_count = 0
 
-    while i < n1 and j < n2:
-        if arr1[i] < arr2[j]:
-            if len(arr) == 0 or arr[-1] != arr1[i]:
-                arr.append(arr1[i]) 
-            i += 1
-        elif arr2[j] < arr1[i]:
-            if len(arr) == 0 or arr[-1] != arr2[j]:    
-                arr.append(arr2[j]) 
-            j += 1
+    for i in range(n):
+        if arr[i] == 1:
+            count += 1
         else:
-            if arr[-1] != arr1[i]:
-                arr.append(arr1[i])
-            i += 1
-
-    while i < n1:
-        if arr[-1] != arr1[i]:
-            arr.append(arr1[i])
-        i += 1
-
-    while j < n2:
-        if arr[-1] != arr2[j]:
-            arr.append(arr2[j])    
-        j += 1
-
-
-    return arr               
-
-
-
+            count = 0        
+        max_count = max(count, max_count)
+    return max_count
 
 
     
-
 
 if __name__ == "__main__":
-    print(temp([1,2,3,4,5,6,7,8,9,10], [2,3,4,4,5,11,12]))
+    print(func([1,1,0,1,1,1]))
+    print(func([1,0,1,1,0,1]))

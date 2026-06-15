@@ -34,8 +34,8 @@ def right_rotate_arr_by_k(arr: List[int], k: int) -> List[int]:
     k = k % n
                          # [1,2,3,4,5] -> 
     reverse(arr, 0, n-1) # [5,4,3,2,1] -> 
-    reverse(arr, 0, k-1) # [3,4,5,2,1] ->
-    reverse(arr, k, n-1) # [3,4,5,1,2]
+    reverse(arr, 0, k-1) # [4,5,3,2,1] ->
+    reverse(arr, k, n-1) # [4,5,1,2,3]
 
     return arr
 
