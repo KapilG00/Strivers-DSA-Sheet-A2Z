@@ -1,25 +1,24 @@
+from typing import List
 
+def func(arr: List[str]) -> str:
+    result = []
 
-def func(s: str) -> str:
-    # str_int = int(s)
-    idx = -1
-    n = len(s)
+    arr.sort()
 
-    for i in range(n-1,-1,-1):
-        if (int(s[i]) % 2) == 1:
-            idx = i
-            break
+    first_ele = arr[0]
+    last_ele = arr[-1]
+    
+    for i in range(min(len(first_ele), len(last_ele))):
+        if first_ele[i] != last_ele[i]:
+            return "".join(result)
+        result.append(first_ele[i])
+        print("Result: ", result)
 
-    j = 0
+    return "".join(result)    
 
-    while j <= idx and s[j] == "0":
-        j += 1
-
-    return s[j:idx+1]        
 
 
 
 if __name__ == "__main__":
-    print(func("5347"))
-    print(func("0214638"))
-    print(func("00138"))
+    print(func(["flower", "flow", "flight"]))
+    print(func(["apple", "banana", "grape", "mango"]))
