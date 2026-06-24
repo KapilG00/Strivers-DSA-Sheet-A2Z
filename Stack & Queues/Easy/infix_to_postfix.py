@@ -36,8 +36,8 @@ def infix_to_postfix(s: str) -> str:
                   stack[-1] != '(' and \
                   (
                     precedence[stack[-1]] > precedence[s[i]] or 
-                    # Below condition is for the cases where stack's top most element precedence
-                    # and current character of an input string are equal AND current character
+                    # Below condition is for the cases where stack's top most element's precedence
+                    # and current character precedence of an input string are equal AND current character
                     # is not equal to "^" (because "^" is right associative). 
                     (
                         precedence[stack[-1]] == precedence[s[i]] and
