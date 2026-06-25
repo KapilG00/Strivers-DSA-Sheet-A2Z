@@ -1,58 +1,17 @@
 # TC: O(n)
 # SC: O(N)
-def infix_to_postfix(s: str) -> str:
-    n = len(s)
+def number_of_greater_elements_to_right(arr: List[int]) -> List[int]:
+    n = len(arr)
+    greater_ele_arr = [-1] * n
     stack = []
-    result = ""
-    i = 0
 
-    precedence = {
-        '+': 1,
-        '-': 1,
-        '*': 2,
-        '/': 2,
-        '^': 3
-    }
+    for i in range(n):
+        while stack and arr[i] > arr[stack[-1]]:
+            poped_idx = stack.pop()
+            greater_ele_arr[poped_idx] = arr[i]
+        stack.append(i)
 
-    while i < n:
-        # Add all the operands in the result.
-        if s[i].isalnum():
-            result += s[i]
-        
-        # Handle the '(' paranthesis.
-        elif s[i] == '(':
-            stack.append(s[i])
-
-        # Handle the ')' paranthesis.
-        elif s[i] == ')':
-            while len(stack) > 0 and stack[-1] != '(':
-                result += stack.pop()
-            stack.pop()
-
-        # Add all the operators in the stack.
-        else:
-            # Pop all the operators from stack until current operator is greater than stack's current operator.
-            while len(stack) > 0 and \
-                  stack[-1] != '(' and \
-                  (
-                    precedence[stack[-1]] > precedence[s[i]] or 
-                    # Below condition is for the cases where stack's top most element precedence
-                    # and current character of an input string are equal AND current character
-                    # is not equal to "^" (because "^" is right associative). 
-                    (
-                        precedence[stack[-1]] == precedence[s[i]] and
-                        s[i] != '^'
-                    )
-                  ):
-                result += stack.pop()
-            stack.append(s[i])    
-
-        i += 1
-
-    while len(stack) > 0:
-        result += stack.pop()
-   
-    return result
+    return greater_ele_arr
 
 
 
