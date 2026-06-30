@@ -51,10 +51,7 @@ class MaxHeap:
             largest = ri
 
         if largest != ind:
-            self.arr[ind], self.arr[largest] = (
-                self.arr[largest],
-                self.arr[ind]
-            )
+            self.arr[ind], self.arr[largest] = self.arr[largest], self.arr[ind]
             self.heapify(largest)
 
     # Return maximum element
@@ -86,10 +83,7 @@ class MaxHeap:
         self.arr[i] = val
 
         while i != 0 and self.arr[self.parent(i)] < self.arr[i]:
-            self.arr[self.parent(i)], self.arr[i] = (
-                self.arr[i],
-                self.arr[self.parent(i)]
-            )
+            self.arr[self.parent(i)], self.arr[i] = self.arr[i], self.arr[self.parent(i)]
             i = self.parent(i)
 
     # Delete element at index i
@@ -104,11 +98,6 @@ class MaxHeap:
         
    
           
-
-    
-
-
-
 if __name__ == "__main__":
     mh = MaxHeap(10)
     mh.insert(4)
