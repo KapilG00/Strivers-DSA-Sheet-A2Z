@@ -31,3 +31,4 @@ if __name__ == "__main__":
     print(assign_cookies([1,2,3], [1,1]))
     print(assign_cookies([1,2], [1,2,3]))
     print(assign_cookies([1,2], [2]))
+    print(assign_cookies([2,2,3], [1,1]))
