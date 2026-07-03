@@ -7,11 +7,12 @@ def print_1_to_n(times: int, num: int) -> None:
 
 # Using backtracking.
 def print_1_to_n(times: int, num: int) -> None:
-    if num > times:
+    if num < 1:
         return
-    print_1_to_n(times, num+1)
+    print_1_to_n(times, num-1)
     print(num, end=" ")
 
 
 if __name__ == "__main__":
     print(print_1_to_n(4, 1))
+    print(print_1_to_n(4, 4)) # For back-tracking
