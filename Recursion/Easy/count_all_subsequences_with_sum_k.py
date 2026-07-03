@@ -5,6 +5,7 @@ from typing import List
 # SC: O(n)
 def count_all_subsequences_sum_k(arr: List[int], idx: int, sum: int, target: int) -> int:
     n = len(arr)
+    
     if idx == n:
         if sum == target:
             return 1

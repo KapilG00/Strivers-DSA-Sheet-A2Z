@@ -5,11 +5,11 @@ from typing import List
 # SC: O(n)
 def print_subsequence_sum_k(arr: List[int], idx: int, sum: int, subsequence_arr_sum: List[int], target: int) -> None:
     n = len(arr)
+    
     if idx == n:
         if sum == target:
             print(subsequence_arr_sum)
-            return True
-        return False
+        return
     
     # Add the current element and add it to the sum.
     subsequence_arr_sum.append(arr[idx])
