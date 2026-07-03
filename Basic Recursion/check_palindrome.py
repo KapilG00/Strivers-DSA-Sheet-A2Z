@@ -1,13 +1,14 @@
 def check_palindrome(input_str: str, idx: int) -> bool:
+    n = len(input_str)
     # base case.
-    if idx >= (len(input_str)/2):
+    if idx >= (n//2):
         return True
     
     # compare two opposite side characters of string.
-    if input_str[idx] != input_str[len(input_str)-1-idx]:
+    if input_str[idx] != input_str[n-idx-1]:
         return False
     
-    # recursice call.
+    # recursive call.
     return check_palindrome(input_str, idx+1)
 
     

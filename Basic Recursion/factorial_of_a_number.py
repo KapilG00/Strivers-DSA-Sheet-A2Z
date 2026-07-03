@@ -2,7 +2,6 @@
 def factorial_of_a_number(num: int) -> int:
     if num == 1:
         return 1
-
     return num * factorial_of_a_number(num-1)
 
 

@@ -5,6 +5,7 @@ from typing import List
 # SC: O(n)
 def print_all_subsequences(arr: List[int], idx: int, a: List[int]) -> None:
     n = len(arr)
+    
     if idx >= n:
         print(a)
         return 0
