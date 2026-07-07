@@ -3,17 +3,14 @@ from typing import List
 # Brute-force
 # TC: O(q*n); where 'n' is length of array and 'q' is no of queries.
 # SC: O(1)
-# def differnce_array_technique(arr: List[int], queries: List[tuple]) -> List[int]:
-#     for query in queries:
-#         l, r, x = query
+def differnce_array_technique(arr: List[int], queries: List[tuple]) -> List[int]:
+    for query in queries:
+        l, r, x = query
 
-#         for i in range(l, r+1):
-#             arr[i] += x
+        for i in range(l, r+1):
+            arr[i] += x
 
-#     return arr        
-        
-
-
+    return arr        
 
 # TC: O(n) + O(q); where 'n' is length of array and 'q' is no of queries.
 # SC: O(n)
@@ -41,8 +38,6 @@ def differnce_array_technique(arr: List[int], queries: List[tuple]) -> List[int]
     return prefix_sum_arr
     
     
-
-
 
 if __name__ == "__main__":
     print(differnce_array_technique([0,0,0,0,0,0,0], [(0,2,5), (1,3,6), (2,5,1)]))
