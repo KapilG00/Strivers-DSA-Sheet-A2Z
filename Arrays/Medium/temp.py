@@ -1,29 +1,22 @@
 from typing import List
 
 
-def func(arr: List[int], sum: int) -> List[int]:
+def func(arr: List[int]) -> int:
     n = len(arr)
-    max_length = 0
-    l, r = 0, 0
-    prefix_sum = arr[0]
+    leaders_array = []
 
-    while r < n:
-        # If the sum exceeds K, shrink the window
-        while l <= r and prefix_sum > sum:
-            prefix_sum -= arr[l]
-            l += 1
+    max_from_right = arr[n-1]
+    leaders_array.append(max_from_right)
 
-        if prefix_sum == sum:
-            max_length = max(max_length, r-l+1)
-
-        r += 1
-        if r < n:
-            prefix_sum += arr[r] 
-
-    return max_length        
+    for i in range(n-2, -1, -1):
+        if arr[i] > max_from_right:
+            max_from_right = arr[i]
+            leaders_array.append(max_from_right)
+    
+    return leaders_array
 
 
 
 if __name__ == "__main__":
-    print(func([10,5,2,7,1,9], 10))
-    print(func([-3,2,1], 6))
+    print(func([4,7,1,0]))
+    print(func([10,22,12,3,0,6]))

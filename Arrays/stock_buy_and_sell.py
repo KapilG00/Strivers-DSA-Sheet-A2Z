@@ -5,23 +5,24 @@ from typing import List
 # SC -> O(1)
 def max_profit_buy_sell_stock(arr: List[int]) -> int:
     n = len(arr)
-    max_profit = float('-inf')
+    max_profit = 0
 
     for i in range(n):
         for j in range(i+1, n):
             current_profit = arr[j] - arr[i]
-            if current_profit > max_profit:
-                max_profit = current_profit
-    if max_profit < 0:
-        max_profit = 0
+            max_profit = max(max_profit, current_profit)
 
     return max_profit            
 
 # TC -> O(n)
 # SC -> O(1)
 def max_profit_buy_sell_stock(arr: List[int]) -> int:
+    """
+    The idea is to track the minimum price so far while traversing the array and calculate the profit if we sold today. 
+    This way, we can constantly update the maximum profit without using nested loops.
+    """
     n = len(arr)
-    max_profit = float('-inf')
+    max_profit = 0
     min_price = float('inf')
 
     for i in range(n):
