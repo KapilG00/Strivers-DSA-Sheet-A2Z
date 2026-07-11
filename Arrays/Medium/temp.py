@@ -1,22 +1,35 @@
 from typing import List
 
 
+def ls(arr: List[int], ele: int) -> bool:
+    m = len(arr)
+
+    for j in range(m):
+        if arr[j] == ele:
+            return True
+    return False    
+
+
 def func(arr: List[int]) -> int:
     n = len(arr)
-    leaders_array = []
-
-    max_from_right = arr[n-1]
-    leaders_array.append(max_from_right)
-
-    for i in range(n-2, -1, -1):
-        if arr[i] > max_from_right:
-            max_from_right = arr[i]
-            leaders_array.append(max_from_right)
+    length_of_longest_cons_sequence = 1
     
-    return leaders_array
+    for i in range(n):
+        current_length_of_longest_seq = 1
+        ele = arr[i]
+
+        while ls(arr, ele+1):
+            ele += 1
+            current_length_of_longest_seq += 1
+        length_of_longest_cons_sequence = max(length_of_longest_cons_sequence, current_length_of_longest_seq)
+
+    return length_of_longest_cons_sequence    
+
+    
+    
 
 
 
 if __name__ == "__main__":
-    print(func([4,7,1,0]))
-    print(func([10,22,12,3,0,6]))
+    print(func([100,4,200,1,3,2]))
+    
