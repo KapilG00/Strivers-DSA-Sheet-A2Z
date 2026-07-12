@@ -5,15 +5,15 @@ from typing import List
 # n => no. of matrix rows; m => no. of matrix columns
 # TC: O(n^2)
 # SC: O(n^2)
-# def rotate_matrix_by_90_degrees(matrix: List[List[int]]) -> List[List[int]]:
-#     n = len(matrix)
-#     rotated_matrix = [[0]* n for _ in range(n)]
+def rotate_matrix_by_90_degrees(matrix: List[List[int]]) -> List[List[int]]:
+    n = len(matrix)
+    rotated_matrix = [[0]* n for _ in range(n)]
 
-#     for row in range(n):
-#         for column in range(n):
-#             rotated_matrix[column][n-1-row] = matrix[row][column]
+    for row in range(n):
+        for column in range(n):
+            rotated_matrix[column][n-1-row] = matrix[row][column]
 
-#     return rotated_matrix
+    return rotated_matrix
 
 # Optimal
 # n => no. of matrix rows; m => no. of matrix columns
