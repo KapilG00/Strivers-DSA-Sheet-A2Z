@@ -13,9 +13,9 @@ def two_sum(arr: List[int], target: int) -> tuple[int,int]:
 
     return (-1,-1)        
 
-# TC -> O(n)
-# SC -> O(n)
-# Better (using hashmap)
+# # TC -> O(n)
+# # SC -> O(n)
+# # Better (using hashmap)
 def two_sum(arr: List[int], target: int) -> tuple[int,int]:
     n = len(arr)
     hash_map = {}
@@ -32,6 +32,7 @@ def two_sum(arr: List[int], target: int) -> tuple[int,int]:
 # Optimal (using two-pointers)
 def two_sum(arr: List[int], target: int) -> tuple[int,int]:
     n = len(arr)
+    arr.sort()
     l = 0
     r = n-1
 
@@ -43,7 +44,7 @@ def two_sum(arr: List[int], target: int) -> tuple[int,int]:
         elif current_sum < target:
             l += 1
         else:
-            return (1,r)
+            return (l,r)
 
     return (-1,-1)            
 
