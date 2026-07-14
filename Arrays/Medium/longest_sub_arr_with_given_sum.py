@@ -67,7 +67,7 @@ def longest_sub_arr_with_given_sum(arr: List[int], k: int) -> List[int]:
 # SC -> O(n)
 # Using hashing.
 def longest_sub_arr_with_given_sum(arr: List[int], k: int) -> List[int]:
-#     """This will work only if an array consists of only positive elements."""
+    """This will work only if an array consists of only positive elements."""
     sum_map = {}
     prefix_sum = 0
     max_length = 0
@@ -76,12 +76,12 @@ def longest_sub_arr_with_given_sum(arr: List[int], k: int) -> List[int]:
         prefix_sum += arr[i]
 
         if prefix_sum == k:
-            max_length = max(max_length, i + 1)
+            max_length = max(max_length, i+1)
 
         rem = prefix_sum - k
 
         if rem in sum_map:
-            max_length = max(max_length, i - sum_map[rem])
+            max_length = max(max_length, i-sum_map[rem])
             
         sum_map[prefix_sum] = i
 
@@ -104,12 +104,12 @@ def longest_sub_arr_with_given_sum(arr: List[int], k: int) -> int:
         prefix_sum += arr[i]
 
         if prefix_sum == k:
-            max_length = max(max_length, i + 1)
+            max_length = max(max_length, i+1)
 
         rem = prefix_sum - k
 
         if rem in sum_map:
-            max_length = max(max_length, i - sum_map[rem])
+            max_length = max(max_length, i-sum_map[rem])
 
         # Store first occurrence of prefix_sum
         if prefix_sum not in sum_map:
@@ -128,11 +128,11 @@ def longest_sub_arr_with_given_sum(arr: List[int], k: int) -> List[int]:
 
     while r < n:
         # If the sum exceeds K, shrink the window
-        while l <= r and prefix_sum > sum:
+        while l <= r and prefix_sum > k:
             prefix_sum -= arr[l]
             l += 1
 
-        if prefix_sum == sum:
+        if prefix_sum == k:
             max_length = max(max_length, r-l+1)
 
         r += 1

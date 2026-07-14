@@ -1,35 +1,48 @@
 from typing import List
 
 
-def ls(arr: List[int], ele: int) -> bool:
-    m = len(arr)
+def func(arr1: List[int], arr2: List[int]) -> int:
+    n = len(arr1)
+    m = len(arr2)
+    arr = []
+    i, j = 0, 0
 
-    for j in range(m):
-        if arr[j] == ele:
-            return True
-    return False    
+    while i < n and j < m:
+        if arr1[i] <= arr2[j]:
+            arr.append(arr1[i])
+            i += 1
+        elif arr1[i] > arr2[j]:
+            arr.append(arr2[j])
+            j += 1
 
+    # for remaining elements of arr1
+    while i < n:
+        arr.append(arr1[i])
+        i += 1
 
-def func(arr: List[int]) -> int:
-    n = len(arr)
-    length_of_longest_cons_sequence = 1
-    
-    for i in range(n):
-        current_length_of_longest_seq = 1
-        ele = arr[i]
+    # for remaining elements of arr2        
+    while j < m:
+        arr.append(arr2[j])
+        j += 1
 
-        while ls(arr, ele+1):
-            ele += 1
-            current_length_of_longest_seq += 1
-        length_of_longest_cons_sequence = max(length_of_longest_cons_sequence, current_length_of_longest_seq)
+    # Put back the elements from arr to arr1 and arr2 in ascending order.
+    p = len(arr)
+    q = 0
 
-    return length_of_longest_cons_sequence    
+    while q < p:
+        if q < n:
+            arr1[q] = arr[q]
+        else:
+            arr2[q-n] = arr[q]
+        q += 1         
 
+    print(arr1)
+    print(arr2)
     
     
 
 
 
 if __name__ == "__main__":
-    print(func([100,4,200,1,3,2]))
+    print(func([-5,-2,4,5], [-3,1,8]))
     

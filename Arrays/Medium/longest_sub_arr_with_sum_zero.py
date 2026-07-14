@@ -23,12 +23,11 @@ def longest_sub_arr_with_sum_zero(arr: List[int], k: int) -> int:
 # SC -> O(n)
 # Optimal
 def longest_sub_arr_with_sum_zero(arr: List[int], k: int) -> int:
-    n = len(arr)
-    prefix_sum_map = {}
-    max_length = 0
+    sum_map = {}
     prefix_sum = 0
+    max_length = 0
 
-    for i in range(n):
+    for i in range(len(arr)):
         prefix_sum += arr[i]
 
         if prefix_sum == k:
@@ -36,14 +35,13 @@ def longest_sub_arr_with_sum_zero(arr: List[int], k: int) -> int:
 
         rem = prefix_sum - k
 
-        if rem in prefix_sum_map:
-            length = i - prefix_sum_map[rem]
-            max_length = max(max_length, length)
+        if rem in sum_map:
+            max_length = max(max_length, i-sum_map[rem])
 
-        if rem not in prefix_sum_map:
-            prefix_sum_map[prefix_sum] = i    
+        if prefix_sum not in sum_map:
+            sum_map[prefix_sum] = i
 
-    return max_length        
+    return max_length    
 
 
 
