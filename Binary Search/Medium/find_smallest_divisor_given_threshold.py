@@ -19,13 +19,13 @@ def find_smallest_divisor_given_threshold(arr: List[int], limit: int) -> int:
     return -1        
 
 def calculate_sum_of_divisions(arr: List[int], current_divisor: int) -> int:
-    current_smallest_divisor = 0
+    current_divisor_sum = 0
     n = len(arr)
 
     for j in range(n):
-        current_smallest_divisor += math.ceil(arr[j]/current_divisor)
+        current_divisor_sum += math.ceil(arr[j]/current_divisor)
 
-    return current_smallest_divisor
+    return current_divisor_sum
 
 # Optimal  
 # TC: O(log(max(arr))) * O(n)
@@ -38,9 +38,9 @@ def find_smallest_divisor_given_threshold(arr: List[int], limit: int) -> int:
     while low <= high:
         mid = (low+high)//2
 
-        current_smallest_divisor = calculate_sum_of_divisions(arr, mid)
+        current_divisor_sum = calculate_sum_of_divisions(arr, mid)
 
-        if current_smallest_divisor <= limit:
+        if current_divisor_sum <= limit:
             smallest_divisor = mid
             high = mid-1
         else:
