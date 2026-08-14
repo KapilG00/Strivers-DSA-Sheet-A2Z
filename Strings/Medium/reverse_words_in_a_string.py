@@ -1,6 +1,7 @@
 
 # TC: O(n)
 # SC: ~ O(n)
+# Brute-force
 def reverse_words_in_string(s: str) -> str:
     word = ""
     words_list = []
@@ -24,6 +25,7 @@ def reverse_words_in_string(s: str) -> str:
 
 # TC: O(n)
 # SC: O(1)
+# Optimal
 def reverse_words_in_string(s: str) -> str:
     idx = len(s)-1
     reversed_string = ""
