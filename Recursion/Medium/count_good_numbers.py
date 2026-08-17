@@ -6,20 +6,20 @@ MOD = 10**9 + 7
 
 # TC: O(n)
 # SC: O(1)
-# def count_good_numbers(n: int) -> int:
-#     count = 1
+def count_good_numbers(n: int) -> int:
+    count = 1
 
-#     for idx in range(n):
-#         if idx % 2 == 0:
-#             # Even index → 5 choices
-#             count *= 5
-#         else:
-#             # Odd index → 4 choices
-#             count *= 4
+    for idx in range(n):
+        if idx % 2 == 0:
+            # Even index → 5 choices
+            count *= 5
+        else:
+            # Odd index → 4 choices
+            count *= 4
 
-#         count %= MOD
+        count %= MOD
 
-#     return count
+    return count
 
 def power(x: int, n: int) -> int:
     result = 1
@@ -49,49 +49,49 @@ def count_good_numbers(n: int) -> int:
 
     return (v1 * v2) % MOD
 
-# def power(x: int, n: int) -> int:
-#     if n == 0:
-#         return 1
+def power(x: int, n: int) -> int:
+    if n == 0:
+        return 1
 
-#     if n == 1:
-#         return x
+    if n == 1:
+        return x
 
-#     if n%2 == 0:
-#         return power((x*x) % MOD, n//2)
-#     return (x * power(x, n-1)) % MOD
+    if n%2 == 0:
+        return power((x*x) % MOD, n//2)
+    return (x * power(x, n-1)) % MOD
 
 # TC: O(logn)
 # SC: O(logn)   
 # Recursive approach using binary exponentiation.
-# def count_good_numbers(n: int) -> int:
-#     even = (n+1)//2
-#     odd = n//2
-#     v1 = power(5, even)
-#     v2 = power(4, odd)
+def count_good_numbers(n: int) -> int:
+    even = (n+1)//2
+    odd = n//2
+    v1 = power(5, even)
+    v2 = power(4, odd)
 
-#     return (v1*v2) % MOD
+    return (v1*v2) % MOD
 
 # # This is not efficient in terms of complexity.
 # # This code was present on https://takeuforward.org/data-structure/count-good-numbers
 # # TC: O(2^n)
 # # SC: O(n); here "n" is recursive call stack depth
-# def count_good_numbers(n: int, idx: int) -> int:
-#     # Base case
-#     if idx == n:
-#         return 1
+def count_good_numbers(n: int, idx: int) -> int:
+    # Base case
+    if idx == n:
+        return 1
 
-#     count = 0
+    count = 0
     
-#     # Even index: Use even digits
-#     if idx % 2 == 0:  
-#         for _ in range(5):
-#             count = (count + count_good_numbers(n, idx+1)) % MOD
-#     # Odd index: Use prime digits        
-#     else:
-#         for _ in range(4):
-#             count = (count + count_good_numbers(n, idx+1)) % MOD
+    # Even index: Use even digits
+    if idx % 2 == 0:  
+        for _ in range(5):
+            count = (count + count_good_numbers(n, idx+1)) % MOD
+    # Odd index: Use prime digits        
+    else:
+        for _ in range(4):
+            count = (count + count_good_numbers(n, idx+1)) % MOD
 
-#     return count
+    return count
 
         
 
@@ -99,6 +99,6 @@ if __name__ == "__main__":
     print(count_good_numbers(6))
     print(count_good_numbers(4))
     print(count_good_numbers(2))
-    # print(count_good_numbers(2, 0))
-    # print(count_good_numbers(4, 0))
-    # print(count_good_numbers(6, 0))
+    print(count_good_numbers(2, 0))
+    print(count_good_numbers(4, 0))
+    print(count_good_numbers(6, 0))
