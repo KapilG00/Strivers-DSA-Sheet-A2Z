@@ -1,5 +1,27 @@
+# This is linearly increasing time complexity solution,
+# hence, it will not work for large values of "n".
+# TC: O(n)
+# SC: O(1)
+# Iterative approach
+def func(x: int, n: int) -> int:
+    temp = n
+
+    if n < 0:
+        x = 1/x
+        temp = -1 * n
+
+    value = 1
+    for _ in range(temp):
+        value *= x
+
+    return value
+
+
+
+
 # TC: O(logn)
 # SC: O(logn)
+# Recursive approach
 def helper(x: int, n: int) -> float:
     # base condition.
     if n == 0:
