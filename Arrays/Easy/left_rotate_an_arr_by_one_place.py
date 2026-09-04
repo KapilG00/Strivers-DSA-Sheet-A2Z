@@ -39,5 +39,6 @@ def left_rotate_arr_by_one(arr: List[int]) -> List[int]:
     return arr    
 
 
+
 if __name__ == "__main__":
     print(left_rotate_arr_by_one([1,2,3,4,5])) # [2,3,4,5,1]    
