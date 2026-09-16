@@ -6,20 +6,13 @@ def infix_to_prefix(s: str) -> str:
     result = ""
     i = 0
 
-    precedence = {
-        '+': 1,
-        '-': 1,
-        '*': 2,
-        '/': 2,
-        '^': 3,
-        '(': 0,
-        ')': 0
-    }
+    precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "(": 0, ")": 0}
 
     reversed_str = s[::-1]
 
     reversed_list = list(reversed_str)
 
+    # Converting "(" to ")" and ")" to "("
     for j in range(len(reversed_list)):
         if reversed_list[j] == "(":
             reversed_list[j] = ")"
@@ -32,26 +25,32 @@ def infix_to_prefix(s: str) -> str:
         # Add all the operands in the result.
         if reversed_str[i].isalnum():
             result += reversed_str[i]
-        
+
         # Handle the '(' paranthesis.
-        elif reversed_str[i] == '(':
+        elif reversed_str[i] == "(":
             stack.append(reversed_str[i])
 
         # Handle the ')' paranthesis.
-        elif reversed_str[i] == ')':
-            while len(stack) > 0 and stack[-1] != '(':
+        elif reversed_str[i] == ")":
+            while len(stack) > 0 and stack[-1] != "(":
                 result += stack.pop()
             stack.pop()
- 
+
         # Add all the operators in the stack.
         else:
-            if reversed_str[i] == '^':
+            if reversed_str[i] == "^":
                 # Pop the operators from stack until current operator is less than or equal to stack's current operator.
-                while len(stack) > 0 and precedence[reversed_str[i]] <= precedence[stack[-1]]:
+                while (
+                    len(stack) > 0
+                    and precedence[reversed_str[i]] == precedence[stack[-1]]
+                ):
                     result += stack.pop()
             else:
                 # Pop the operators from stack until current operator is less than stack's current operator.
-                while len(stack) > 0 and precedence[reversed_str[i]] < precedence[stack[-1]]:
+                while (
+                    len(stack) > 0
+                    and precedence[reversed_str[i]] < precedence[stack[-1]]
+                ):
                     result += stack.pop()
 
             stack.append(reversed_str[i])
@@ -61,13 +60,14 @@ def infix_to_prefix(s: str) -> str:
     while len(stack) > 0:
         result += stack.pop()
 
-    double_reversed_str = result[::-1]    
-   
+    double_reversed_str = result[::-1]
+
     return double_reversed_str
 
 
-
 if __name__ == "__main__":
+    print(infix_to_prefix("x+y*z/w+u"))
     print(infix_to_prefix("a+b*(c^d-e)"))
     print(infix_to_prefix("h^m^q^(7-4)"))
     print(infix_to_prefix("h+m+q+(7-4)"))
+
