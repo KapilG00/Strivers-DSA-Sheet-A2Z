@@ -2,7 +2,7 @@ from typing import List
 
 # TC: O(n)
 # SC: O(1)
-def count_all_subarrays(arr: List[int]) -> None:
+def count_all_subarrays(arr: List[int]) -> int:
     n = len(arr)
     left, right = 0, 0
     count_of_subarrays = 0 
@@ -16,7 +16,7 @@ def count_all_subarrays(arr: List[int]) -> None:
 
 # TC: O(1)
 # SC: O(1)
-def count_all_subarrays(arr: List[int]) -> None:
+def count_all_subarrays(arr: List[int]) -> int:
     n = len(arr)
     return (n*(n+1))/2
 
