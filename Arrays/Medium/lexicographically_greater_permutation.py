@@ -33,7 +33,8 @@ def lexicographically_next_greater_permutation(arr: List[int]) -> List[int]:
             idx = i
             break
 
-    # If idx = -1 i.e. current permutation is already at max so we need to return the lexicographically smallest permutation possible by doing reverse of the array.
+    # If idx = -1 i.e. current permutation is already at max so we need to return the lexicographically
+    # smallest permutation possible by doing reverse of the array.
     if idx == -1:
         arr.reverse()
         return arr    
